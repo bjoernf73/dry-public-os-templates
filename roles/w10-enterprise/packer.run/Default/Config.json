@@ -1,0 +1,29 @@
+{
+  "display_name": "Create Vsphere OS image for W10 Enterprise",
+  "connection": "winrm",
+  "files": [ 
+        {  "name": "autounattend.xml",             "replace": true  },
+        {  "name": "w10-enterprise-OSConfig.json", "replace": false },
+        {  "name": "background.jpg",               "replace": false },
+        {  "name": "background.bgi",               "replace": false }
+  ],
+  "vars": [
+        {  "name": "vcenter_password",              "value_type": "expression",  "value": "$Credentials.Credential1.GetNetworkCredential().Password", "secret": true },
+        {  "name": "vcenter_username",              "value_type": "expression",  "value": "$Credentials.Credential1.username" },
+        {  "name": "winrm_password",                "value_type": "expression",  "value": "$Credentials.Credential2.GetNetworkCredential().Password", "secret": true },
+        {  "name": "winrm_username",                "value_type": "expression",  "value": "$Credentials.Credential2.username"  },
+        {  "name": "vcenter_server",                "value_type": "expression",  "value": "($Configuration.UserConfig.Platforms | Where-Object Name -eq 'vsphere').vcenter_server"             },
+        {  "name": "vcenter_cluster",               "value_type": "expression",  "value": "($Configuration.UserConfig.Platforms | Where-Object Name -eq 'vsphere').vcenter_cluster"            },
+        {  "name": "vcenter_fast_datastore",        "value_type": "expression",  "value": "($Configuration.UserConfig.Platforms | Where-Object Name -eq 'vsphere').vcenter_fast_datastore"     },
+        {  "name": "vcenter_big_datastore",         "value_type": "expression",  "value": "($Configuration.UserConfig.Platforms | Where-Object Name -eq 'vsphere').vcenter_big_datastore"      },
+        {  "name": "vcenter_templates_folder",      "value_type": "expression",  "value": "($Configuration.UserConfig.Platforms | Where-Object Name -eq 'vsphere').vcenter_templates_folder"   },
+        {  "name": "vcenter_template",              "value_type": "expression",  "value": "($Configuration.UserConfig.Platforms | Where-Object Name -eq 'vsphere').template_w10_enterprise"   },
+        {  "name": "vcenter_network",               "value_type": "expression",  "value": "$Resource.Resolved_Network.Switch_Name"                                                  },
+        {  "name": "vcenter_iso_vmwaretools",       "value_type": "expression",  "value": "($Configuration.UserConfig.Platforms | Where-Object Name -eq 'vsphere').vcenter_iso_vmwaretools"    },
+        {  "name": "win_scripts",                   "value_type": "expression",  "value": "Join-Path -Path $($Resolved.ModuleFilesSourcePath) -ChildPath 'win-scripts'" },
+        {  "name": "resource_name",                 "value_type": "expression",  "value": "($Resource.Name)"   },
+        {  "name": "product_key",                   "value_type": "expression",  "value": "$Configuration.UserConfig.Strings.w10_product_key" },
+        {  "name": "vcenter_iso_w10_21H2_business_editions",    "value_type": "expression",  "value": "($Configuration.UserConfig.Platforms | Where-Object Name -eq 'vsphere').vcenter_iso_w10_21H2_business_editions" }
+        
+    ]
+}

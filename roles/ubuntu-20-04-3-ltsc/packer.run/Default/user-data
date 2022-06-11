@@ -1,0 +1,26 @@
+#cloud-config
+autoinstall:
+  version: 1
+  locale: en_US
+  keyboard:
+    layout: 'no'
+    variant: 'no'
+  identity:
+    hostname: ubu-20.04.3-tmpl
+    password: '$6$wdAcoXrU039hKYPd$508Qvbe7ObUnxoj15DRCkzC3qO7edjH0VV7BPNRDYK4QR8ofJaEEF2heacn0QgD.f8pO8SNp83XNdWG6tocBM1'
+    username: ubuntu
+  network:
+    network:
+      version: 2
+      ethernets:
+        ens192:
+          dhcp-identifier: mac
+          dhcp4: yes
+          dhcp6: no
+  ssh:
+    install-server: true
+    allow-pw: true
+    authorized-keys: []
+  late-commands:
+    - sed -i 's/^#*\(send dhcp-client-identifier\).*$/\1 = hardware;/' /target/etc/dhcp/dhclient.conf
+    - 'sed -i "s/dhcp4: true/&\n      dhcp-identifier: mac/" /target/etc/netplan/00-installer-config.yaml'

@@ -1,0 +1,88 @@
+{
+    "name": "w10-enterprise",
+    "ps_execution_policy": "RemoteSigned",
+    "cortana": "disable",
+    "update_help": true,
+    "copy_ps_profile_to_default": false,
+    "bg": {
+        "background_image": "f:\\background.jpg",
+        "bg_config": "f:\\background.bgi"
+    },
+    "adm_interfaces": {
+        "rdp": {
+            "enable": true,
+            "nla": false
+        },
+        "winrm": {
+            "enable": true
+        },
+        "sshd": {
+            "enable": true
+        }
+    },
+    "directories": [
+        "C:\\Temp"
+    ],
+    "firewall": {
+        "remove_local_rules": true,
+        "add_local_rules": [
+            {
+                "DisplayName": "SSH (TCP-in)",
+                "Direction": "Inbound",
+                "Action": "Allow",
+                "Protocol": "TCP",
+                "LocalPort": "22"
+            },
+            {
+                "DisplayName": "RDP (TCP-in)",
+                "Direction": "Inbound",
+                "Action": "Allow",
+                "Protocol": "TCP",
+                "LocalPort": "3389"
+            },
+            {
+                "DisplayName": "Winrm (TCP-in)",
+                "Direction": "Inbound",
+                "Action": "Allow",
+                "Protocol": "TCP",
+                "LocalPort": "5985"
+            },
+            {
+                "DisplayName": "Winrm https (TCP-in)",
+                "Direction": "Inbound",
+                "Action": "Allow",
+                "Protocol": "TCP",
+                "LocalPort": "5986"
+            },
+            {
+                "DisplayName": "ICMP",
+                "Direction": "Inbound",
+                "Action": "Allow",
+                "Protocol": "ICMPv4"
+            }
+        ]
+    },
+    "windows_update_classifications": [
+        "all"
+    ],
+    "chocos": [
+        { "Name": "vscode" },
+        { "Name": "git"  },  
+        { "Name": "bginfo"  },  
+        { "Name": "7zip"  },  
+        { "Name": "wireshark" }
+    ],
+    "windows_optional_features": [
+        {  "FeatureName": "Printing-XPSServices-Features",          "State": "Disabled" }
+    ],
+    "windows_capabilities": [
+        {  "Name": "OpenSSH.Client~~~~0.0.1.0",                     "State": "Installed" },
+        {  "Name": "Rsat.ActiveDirectory.DS-LDS.Tools~~~~0.0.1.0",  "State": "Installed" },
+        {  "Name": "Rsat.CertificateServices.Tools~~~~0.0.1.0",     "State": "Installed" },
+        {  "Name": "Rsat.DHCP.Tools~~~~0.0.1.0",                    "State": "Installed" },
+        {  "Name": "Rsat.Dns.Tools~~~~0.0.1.0",                     "State": "Installed" },
+        {  "Name": "Rsat.FileServices.Tools~~~~0.0.1.0",            "State": "Installed" },
+        {  "Name": "Rsat.GroupPolicy.Management.Tools~~~~0.0.1.0",  "State": "Installed" },
+        {  "Name": "Rsat.ServerManager.Tools~~~~0.0.1.0",           "State": "Installed" }
+    ]
+}

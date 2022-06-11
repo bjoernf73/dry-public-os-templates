@@ -1,0 +1,82 @@
+{
+    "name": "ws22-std-core-ltsc",
+    "ps_execution_policy": "RemoteSigned",
+    "update_help": true,
+    "adm_interfaces": {
+        "rdp": {
+            "enable": true,
+            "nla": false
+        },
+        "winrm": {
+            "enable": true
+        },
+        "sshd": {
+            "enable": true
+        }
+    },
+    "directories": [
+        "C:\\Temp"
+    ],
+    "firewall": {
+        "remove_local_rules": true,
+        "add_local_rules": [
+            {
+                "DisplayName": "SSH (TCP-in)",
+                "Direction": "Inbound",
+                "Action": "Allow",
+                "Protocol": "TCP",
+                "LocalPort": "22"
+            },
+            {
+                "DisplayName": "RDP (TCP-in)",
+                "Direction": "Inbound",
+                "Action": "Allow",
+                "Protocol": "TCP",
+                "LocalPort": "3389"
+            },
+            {
+                "DisplayName": "Winrm (TCP-in)",
+                "Direction": "Inbound",
+                "Action": "Allow",
+                "Protocol": "TCP",
+                "LocalPort": "5985"
+            },
+            {
+                "DisplayName": "Winrm https (TCP-in)",
+                "Direction": "Inbound",
+                "Action": "Allow",
+                "Protocol": "TCP",
+                "LocalPort": "5986"
+            },
+            {
+                "DisplayName": "ICMP",
+                "Direction": "Inbound",
+                "Action": "Allow",
+                "Protocol": "ICMPv4"
+            }
+        ]
+    },
+    "windows_update_classifications": [
+        "Critical Updates",
+        "Security Updates",
+        "Definition Updates",
+        "Update Rollups",
+        "Service Packs",
+        "Tools",
+        "Feature Packs",
+        "Updates",
+        "Update Rollups",
+        "Upgrades",
+        "Upgrade"
+    ],
+    "chocos": [
+        { "Name": "git"                   }
+    ],
+    "windows_optional_features": [
+        {  "FeatureName": "ActiveDirectory-PowerShell", "State": "Enabled"   }
+    ],
+    "windows_capabilities": [
+        {  "Name": "OpenSSH.Client~~~~0.0.1.0",         "State": "Installed" },
+        {  "Name": "OpenSSH.Server~~~~0.0.1.0",         "State": "Installed" }
+    ]
+}

@@ -1,0 +1,6 @@
+{
+    "role_short_name":   "w11e",
+    "role":              "w11-enterprise",
+    "base_config":       "Windows11Client",
+    "description":       "Windows 11 Enterprise"
+}

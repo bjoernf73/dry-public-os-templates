@@ -1,0 +1,6 @@
+{
+    "role_short_name": "ws22stdg",
+    "role":            "ws22-std-gui-ltsc",
+    "base_config":      "WindowsServer",
+    "description":     "Windows Server 2022 LTSC STANDARD"
+}

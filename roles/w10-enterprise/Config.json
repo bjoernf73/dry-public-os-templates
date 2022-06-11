@@ -1,0 +1,6 @@
+{
+    "role_short_name":   "w10e",
+    "role":       "w10-enterprise",
+    "base_config":      "Windows10Client",
+    "description": "Windows 10 Enterprise"
+}

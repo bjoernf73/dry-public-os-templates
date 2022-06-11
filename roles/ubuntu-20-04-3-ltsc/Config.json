@@ -1,0 +1,6 @@
+{
+    "role_short_name":   "Ubu20043ltsc",
+    "role":       "Ubuntu-20-04-3-ltsc",
+    "base_config":      "ubuntuserver",
+    "description": "Ubuntu 20.04.4 LTSC"
+}

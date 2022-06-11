@@ -1,0 +1,24 @@
+{
+    "display_name": "Create vSphere image for Ubuntu 20.04.3 ltsc",
+    "connection": "ssl",
+    "type": "linux",
+    "files": [ 
+        {   "name": "user-data",                   "replace": false, "tag": "http-file"  },
+        {   "name": "meta-data",                   "replace": false, "tag": "http-file"  }
+    ],
+     "vars": [
+        {  "name": "vcenter_password",              "value_type": "expression",  "value": "$Credentials.Credential1.GetNetworkCredential().Password", "secret": true },
+        {  "name": "vcenter_username",              "value_type": "expression",  "value": "$Credentials.Credential1.username" },
+        {  "name": "ssh_password",                  "value_type": "expression",  "value": "$Credentials.Credential2.GetNetworkCredential().Password", "secret": true },
+        {  "name": "ssh_username",                  "value_type": "expression",  "value": "$Credentials.Credential2.username"  },
+        {  "name": "vcenter_server",                "value_type": "expression",  "value": "($Configuration.UserConfig.Platforms | Where-Object Name -eq 'vsphere').vcenter_server"             },
+        {  "name": "vcenter_cluster",               "value_type": "expression",  "value": "($Configuration.UserConfig.Platforms | Where-Object Name -eq 'vsphere').vcenter_cluster"            },
+        {  "name": "vcenter_fast_datastore",        "value_type": "expression",  "value": "($Configuration.UserConfig.Platforms | Where-Object Name -eq 'vsphere').vcenter_fast_datastore"     },
+        {  "name": "vcenter_big_datastore",         "value_type": "expression",  "value": "($Configuration.UserConfig.Platforms | Where-Object Name -eq 'vsphere').vcenter_big_datastore"      },
+        {  "name": "vcenter_templates_folder",      "value_type": "expression",  "value": "($Configuration.UserConfig.Platforms | Where-Object Name -eq 'vsphere').vcenter_templates_folder"   },
+        {  "name": "vcenter_template",              "value_type": "expression",  "value": "($Configuration.UserConfig.Platforms | Where-Object Name -eq 'vsphere').template_ubuntu_20_04_3_ltsc"   },
+        {  "name": "resource_name",                 "value_type": "expression",  "value": "($Resource.Name)"   },
+        {  "name": "vcenter_network",               "value_type": "expression",  "value": "$Resource.Resolved_Network.Switch_Name"                                                  },
+        {  "name": "vcenter_iso",                   "value_type": "expression",  "value": "($Configuration.UserConfig.Platforms | Where-Object Name -eq 'vsphere').'vcenter_iso_ubuntu-20-04-3'" }
+    ]
+}
